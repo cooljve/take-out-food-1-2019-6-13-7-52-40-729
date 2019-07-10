@@ -1,3 +1,5 @@
+const allItems = loadAllItems();
+
 function bestCharge(selectedItems) {
   return /*TODO*/;
 }
@@ -12,3 +14,11 @@ function transformItemsToObject(selectedItems){
   return itemObject;
 }
 
+function findItems(itemObject,allItems) {
+  let orderedItems = [];
+  for (let item of allItems) {
+    item.count = itemObject[item.id];
+    orderedItems.push(item);
+  }
+  return orderedItems.filter((num) => num.count == undefined ? false : true);
+}
