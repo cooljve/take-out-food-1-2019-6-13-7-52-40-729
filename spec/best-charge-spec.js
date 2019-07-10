@@ -45,4 +45,11 @@ describe('Take out food', function () {
     expect(summary).toEqual(expected)
   });
 
+  it('should generate itemObject when invoke transformItemsToObject given ITEM0001 x 1,ITEM0013 x 2,ITEM0022 x 1', function() {
+    let inputs = ["ITEM0001 x 1", "ITEM0013 x 2", "ITEM0022 x 1"];
+    let summary = transformItemsToObject(inputs);
+    let expected = {'ITEM0001': 1, 'ITEM0013': 2, 'ITEM0022': 1};
+    expect(summary).toEqual(expected);
+  });
+
 });
