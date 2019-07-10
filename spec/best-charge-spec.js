@@ -74,7 +74,7 @@ describe('Take out food', function () {
     expect(summary).toEqual(expected);
   });
 
-  it('should return 指定菜品半价 when invoke selectPromotion given orderedItems', function () {
+  it('should return promotion type is 指定菜品半价 when invoke selectPromotion given orderedItems', function () {
     let inputs = [{
       id: 'ITEM0001',
       name: '黄焖鸡',
@@ -96,7 +96,29 @@ describe('Take out food', function () {
     expect(summary.promotion).toEqual(expected);
   });
 
-  it('should return 满30减6元 when invoke selectPromotion given orderedItems', function () {
+  it('should return halfPriceItems  are 黄焖鸡,凉皮 when invoke selectPromotion given orderedItems', function () {
+    let inputs = [{
+      id: 'ITEM0001',
+      name: '黄焖鸡',
+      price: 18.00,
+      count: 1
+    }, {
+      id: 'ITEM0013',
+      name: '肉夹馍',
+      price: 6.00,
+      count: 2
+    }, {
+      id: 'ITEM0022',
+      name: '凉皮',
+      price: 8.00,
+      count: 1
+    }];
+    let summary = selectPromotion(inputs, promotions);
+    let expected = ['黄焖鸡','凉皮'];
+    expect(summary.halfPriceItems).toEqual(expected);
+  });
+
+  it('should return promotion type is 满30减6元 when invoke selectPromotion given orderedItems', function () {
     let inputs = [{
       id: 'ITEM0013',
       name: '肉夹馍',
@@ -124,5 +146,7 @@ describe('Take out food', function () {
     let expected = undefined;
     expect(summary.promotion).toEqual(expected);
   });
+
+
 
 });
